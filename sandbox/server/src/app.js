@@ -6,8 +6,23 @@ const app = express();
 app.use(morgan('dev'));
 app.use(express.json());
 
-app.get("/api/sandbox/health",(req,res)=>{
-    res.send("hello world sandbox")
-})
+// Base route handler to prevent 404s
+app.get("/api/sandbox", (req, res) => {
+    res.status(200).json({
+        status: "success",
+        message: "Welcome to the NovaForge Sandbox API Service",
+        service: "sandbox-server",
+        version: "1.0.0",
+        endpoints: {
+            base: "/api/sandbox",
+            health: "/api/sandbox/health"
+        }
+    });
+});
+
+// Health check endpoint (retains 'hello world sandbox' response for absolute compatibility)
+app.get("/api/sandbox/health", (req, res) => {
+    res.status(200).send("hello world sandbox");
+});
 
 export default app;
