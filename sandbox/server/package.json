@@ -2,7 +2,6 @@
   "name": "server",
   "version": "1.0.0",
   "main": "server.js",
-  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon -L server.js",
@@ -12,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "description": "",
+  "type":"module",
   "dependencies": {
     "@kubernetes/client-node": "^1.4.0",
     "dotenv": "^17.4.2",
